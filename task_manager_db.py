@@ -38,6 +38,7 @@ class Task(Base):
     category = Column(String)
     priority = Column(String)
     status = Column(String, nullable = False)
+    completed_date = Column(Date, nullable=True)
 
     user = relationship("User", back_populates="tasks")
     
@@ -128,14 +129,16 @@ def delete_task(task_id):
     else:
         print("Task not found")
     
-def update_task(task_id, task_description, task_date, task_category, task_priority, task_status):
-    task = session.query(Task).filter_by(id = task_id).first()
+def update_task(task_id, task_description, task_date, task_category, task_priority, task_status, completed_date=None):
+    task = session.query(Task).filter_by(id=task_id).first()
     if task:
         task.description = task_description
         task.date = task_date
         task.category = task_category
         task.priority = task_priority
         task.status = task_status
+        if completed_date:
+            task.completed_date = completed_date
     session.commit()
 
 def display_tasks():
