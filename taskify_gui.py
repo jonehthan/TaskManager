@@ -231,9 +231,6 @@ class TaskManagerGUI:
         # Get tasks based on filters
         tasks = self.filter_tasks()
 
-        # Debug: Print number of tasks after filtering
-        print(f"[DEBUG] Number of tasks after filtering: {len(tasks)}")
-
         # If there are no tasks, show a message
         if not tasks:
             messagebox.showinfo("No Tasks", "No tasks match the filters or there are no tasks found in the database.")
@@ -246,9 +243,6 @@ class TaskManagerGUI:
         """Return filtered tasks based on the selected completion status and priority"""
         tasks = get_tasks_user_id(self.current_user.id)
 
-        # Debug: Print number of tasks before filtering
-        print(f"[DEBUG] Total tasks before filtering: {len(tasks)}")
-
         # Filter tasks based on the selected completion status
         if self.filtered_status != "All":
             tasks = [task for task in tasks if task.status == self.filtered_status]
@@ -256,9 +250,6 @@ class TaskManagerGUI:
         # Filter tasks based on the selected priority
         if self.filtered_priority != "All":
             tasks = [task for task in tasks if task.priority == self.filtered_priority]
-
-        # Debug: Print filtered tasks to verify they match the criteria
-        print(f"[DEBUG] Filtered tasks: {tasks}")
 
         return tasks
 
@@ -297,9 +288,6 @@ class TaskManagerGUI:
 
                 # Set the completed date if the task is being marked as completed
                 completed_date = datetime.now().date() if new_status == "Completed" else None
-
-                # Print the completed date to debug
-                print(f"Task ID: {task.id}, Completed Date: {completed_date}")
 
                 # Update the task status and completed date in the database
                 update_task(task_id, task.description, task.date, task.category, task.priority, new_status,
