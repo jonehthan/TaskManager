@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
     <data-source source="LOCAL" name="task_management" uuid="f8176707-d775-4e7b-93d3-05f4cf30ceb7">
-      <driver-ref>sqlite.xerial</driver-ref>
+      <driver-ref>0068763b-d321-4419-b383-f56994315f80</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/task_management.db</jdbc-url>
