@@ -1,0 +1,4 @@
+tkcalendar~=1.6.1
+matplotlib~=3.10.0
+SQLAlchemy~=2.0.40
+setuptools~=75.8.0
