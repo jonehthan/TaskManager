@@ -38,7 +38,7 @@ class TaskChart:
 
         ax2.bar(self.days_of_week, values, color='#4CAF50')
         ax2.set_title('Completed Tasks by Day of the Week')
-        
+
         ax2.set_xlabel('Day of the Week')
         ax2.set_ylabel('Number of Completed Tasks')
 
