@@ -1,2 +1,2 @@
-with open('.gitignore', 'a') as f:
-    f.write('\n# Mac OS files\n.DS_Store\n\n# PyCharm files\n.idea/\n')
+.idea/
+.DS_Store
