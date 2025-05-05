@@ -1,6 +1,7 @@
-from src.gui.pages.login_page import LoginPage
-from src.gui.pages.home_page import HomePage
 from src.database.db_manager import DatabaseManager
+from src.gui.pages.home_page import HomePage
+from src.gui.pages.login_page import LoginPage
+
 
 class TaskManagerGUI:
     def __init__(self, root):

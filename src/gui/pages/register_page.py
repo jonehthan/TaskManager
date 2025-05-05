@@ -3,9 +3,10 @@ from tkinter import ttk, messagebox
 from ..widgets.styled_frame import StyledFrame
 
 class RegisterPage(StyledFrame):
-    def __init__(self, parent, db):
+    def __init__(self, parent, db, on_login_success):
         super().__init__(parent)
         self.db = db
+        self.on_login_success = on_login_success  # Pass it to RegisterPage
         self.setup_ui()
 
     def setup_ui(self):
@@ -48,7 +49,8 @@ class RegisterPage(StyledFrame):
             messagebox.showerror("Error", "Please fill all fields")
 
     def back_to_login(self):
+        """Switch back to the login page"""
         from .login_page import LoginPage
         for widget in self.master.winfo_children():
             widget.destroy()
-        LoginPage(self.master, None, self.db)
+        LoginPage(self.master, self.on_login_success, self.db)
