@@ -15,7 +15,6 @@ This application uses the following libraries that need to be installed:
 - tkcalendar
 - matplotlib
 - SQLAlchemy
-- setuptools
 
 ## Setup and Execution Instructions: Clear, step-by-step instructions on how to set up the environment 
 Install dependencies by running: `pip install -r requirements.txt`
