@@ -55,6 +55,8 @@ class TaskListPage(StyledFrame):
                   command=self.update_task_status).pack(side=tk.LEFT, padx=5)
         ttk.Button(button_frame, text="Delete Task",
                   command=self.delete_task).pack(side=tk.LEFT, padx=5)
+        ttk.Button(button_frame, text="Edit Task",
+                   command=self.edit_task).pack(side=tk.LEFT, padx=5)
 
         # Create task tree
         self.create_task_tree(main_frame)
@@ -133,6 +135,23 @@ class TaskListPage(StyledFrame):
             self.db.delete_task(task_id)
             self.load_tasks()
 
+    def edit_task(self):
+        selected = self.tree.selection()
+        if not selected:
+            messagebox.showerror("Error", "Please select a task")
+            return
+        task_id = self.tree.item(selected[0])["values"][0]
+        task = self.db.get_task_by_id(task_id)
+        if task:
+            from .edit_task_page import EditTaskPage
+            self.destroy()  # Destroy current page
+            EditTaskPage(self.parent, self.user, self.go_back_task_page, self.db, task)
+            # self.load_tasks()
+
     def go_back(self):
         self.destroy()
         self.on_back()
+
+    def go_back_task_page(self):
+        self.destroy()
+        TaskListPage(self.parent, self.user, self.go_back, self.db)
