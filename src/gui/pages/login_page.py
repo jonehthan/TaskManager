@@ -6,7 +6,7 @@ class LoginPage(StyledFrame):
     def __init__(self, parent, on_login_success, db):
         super().__init__(parent)
         self.db = db
-        self.on_login_success = on_login_success
+        self.on_login_success = on_login_success  # Store it
         self.setup_ui()
 
     def setup_ui(self):
@@ -40,7 +40,7 @@ class LoginPage(StyledFrame):
         if username and password:
             user = self.db.login(username, password)
             if user:
-                self.on_login_success(user)
+                self.on_login_success(user)  # This calls the function passed from TaskManagerGUI
             else:
                 messagebox.showerror("Error", "Invalid credentials")
         else:
@@ -51,4 +51,4 @@ class LoginPage(StyledFrame):
         from .register_page import RegisterPage
         for widget in self.master.winfo_children():
             widget.destroy()
-        RegisterPage(self.master, self.db)
+        RegisterPage(self.master, self.db, self.on_login_success)
