@@ -2,7 +2,7 @@ from src.database.db_manager import DatabaseManager
 from src.gui.pages.home_page import HomePage
 from src.gui.pages.login_page import LoginPage
 
-
+# Class that handles the GUI and opens the login window
 class TaskManagerGUI:
     def __init__(self, root):
         self.root = root

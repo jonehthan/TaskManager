@@ -40,8 +40,7 @@ class TaskPage(StyledFrame):
 
         # Due Date
         ttk.Label(form_frame, text="Due Date:").pack(anchor="w", pady=(10,0))
-        self.calendar = Calendar(form_frame, selectmode="day",
-                               date_pattern="yyyy-mm-dd")
+        self.calendar = Calendar(form_frame, selectmode="day",date_pattern="yyyy-mm-dd", showweeknumbers=False)
         self.calendar.pack(pady=(5,10))
 
         # Priority

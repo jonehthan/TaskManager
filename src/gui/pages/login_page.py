@@ -9,6 +9,7 @@ class LoginPage(StyledFrame):
         self.on_login_success = on_login_success  # Store it
         self.setup_ui()
 
+    # Tkinter objects
     def setup_ui(self):
         """Setup login page UI"""
         frame = ttk.Frame(self)
@@ -32,6 +33,7 @@ class LoginPage(StyledFrame):
         ttk.Button(frame, text="Create an Account",
                    command=self.show_register_page).pack(pady=10)
 
+    # Check username and password matches database
     def handle_login(self):
         """Handle login attempt"""
         username = self.username_var.get()
@@ -46,6 +48,7 @@ class LoginPage(StyledFrame):
         else:
             messagebox.showerror("Error", "Please fill all fields")
 
+    # Route to register page
     def show_register_page(self):
         """Switch to registration page"""
         from .register_page import RegisterPage

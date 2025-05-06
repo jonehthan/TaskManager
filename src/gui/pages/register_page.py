@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from ..widgets.styled_frame import StyledFrame
 
+# Register page, handles user registration and adds user to the database.
 class RegisterPage(StyledFrame):
     def __init__(self, parent, db, on_login_success):
         super().__init__(parent)
@@ -30,6 +31,7 @@ class RegisterPage(StyledFrame):
         ttk.Button(frame, text="Register", command=self.handle_register).pack(pady=10)
         ttk.Button(frame, text="Back to Login", command=self.back_to_login).pack(pady=10)
 
+    # Checks username does not already exist and that the passwords match before adding to database.
     def handle_register(self):
         username = self.username_var.get()
         password = self.password_var.get()
@@ -48,6 +50,7 @@ class RegisterPage(StyledFrame):
         else:
             messagebox.showerror("Error", "Please fill all fields")
 
+    # Switch back to the login page
     def back_to_login(self):
         """Switch back to the login page"""
         from .login_page import LoginPage

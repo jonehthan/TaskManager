@@ -4,6 +4,7 @@ from tkcalendar import Calendar
 from datetime import datetime
 from ..widgets.styled_frame import StyledFrame
 
+# Edit task page
 class EditTaskPage(StyledFrame):
     def __init__(self, parent, current_user, on_back, db, current_task):
         super().__init__(parent)
@@ -41,8 +42,7 @@ class EditTaskPage(StyledFrame):
 
         # Due Date
         ttk.Label(form_frame, text="Due Date:").pack(anchor="w", pady=(10,0))
-        self.calendar = Calendar(form_frame, selectmode="day",
-                               date_pattern="yyyy-mm-dd")
+        self.calendar = Calendar(form_frame, selectmode="day",date_pattern="yyyy-mm-dd", showweeknumbers=False)
         self.calendar.selection_set(self.current_task.date)
         self.calendar.pack(pady=(5,10))
 
@@ -58,9 +58,7 @@ class EditTaskPage(StyledFrame):
         # Status
         ttk.Label(form_frame, text="Status:").pack(anchor="w", pady=(10,0))
         self.status_var = tk.StringVar()
-        status_combo = ttk.Combobox(form_frame, textvariable=self.status_var,
-                                    values=["Pending", "Completed"],
-                                    state="readonly")
+        status_combo = ttk.Combobox(form_frame, textvariable=self.status_var,values=["Pending", "Completed"],state="readonly")
         status_combo.pack(fill=tk.X, pady=(5,10))
         status_combo.set(self.current_task.status)  # Default value
 
@@ -68,10 +66,10 @@ class EditTaskPage(StyledFrame):
         ttk.Button(form_frame, text="Edit Task",
                   command=self.edit_task).pack(pady=20)
 
+    # Re-route
     def go_back(self):
-        """Safe way to go back"""
         self.destroy()  # Destroy current page
-        self.on_back()  # Call the callback to show home page
+        self.on_back()
 
     def edit_task(self):
         """Handle task creation"""

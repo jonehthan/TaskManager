@@ -2,6 +2,7 @@ from src.database.db_config import session
 from src.models.user import User
 from src.models.task import Task
 
+# Getters/Setters for database objects
 class DatabaseManager:
     @staticmethod
     def add_user(username, password):
