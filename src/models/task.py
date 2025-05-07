@@ -10,7 +10,6 @@ class Task(Base):
     user_id = Column(Integer, ForeignKey('users.id'))
     description = Column(String, nullable=False)
     date = Column(Date)
-    category = Column(String)
     priority = Column(String)
     status = Column(String, nullable=False)
     completed_date = Column(Date, nullable=True)

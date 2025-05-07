@@ -80,6 +80,7 @@ class EditTaskPage(StyledFrame):
 
         if all([description, date, priority, status]):
             try:
+                completed_date = datetime.now().date() if status == "Completed" else None
                 date_obj = datetime.strptime(date, "%Y-%m-%d").date()
                 self.db.update_task(
                     task_id=self.current_task.id,
@@ -87,7 +88,8 @@ class EditTaskPage(StyledFrame):
                     date=date_obj,
                     category="General",  # Default category
                     priority=priority,
-                    status=status
+                    status=status,
+                    completed_date= completed_date
                 )
                 self.go_back()
             except ValueError:

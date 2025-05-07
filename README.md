@@ -8,7 +8,7 @@ Task Management Project
 
 ## Project Description: A short summary of what the application does.
 This is a task management application that allows the user to create an account and manage tasks.
-Once the user logins, they have the option to add tasks, view existing tasks, 
+Once the user logins, they can add tasks, view, or edit tasks, and logout.
 
 ## Dependencies: List all external Python libraries required.
 This application uses the following libraries that need to be installed:
