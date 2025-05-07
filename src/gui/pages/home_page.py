@@ -2,8 +2,8 @@ import tkinter as tk
 from tkinter import ttk
 from ..widgets.task_chart import TaskChart
 from .task_list_page import TaskListPage
-from ..widgets.task_list import TaskList
 
+# Home page that contains routing back to the login, add task, and view task pages
 class HomePage(ttk.Frame):
     def __init__(self, parent, user, on_logout, db):
         super().__init__(parent)
@@ -42,11 +42,14 @@ class HomePage(ttk.Frame):
         # Charts
         self.display_charts()
 
+    # Show charts if the user has any tasks
     def display_charts(self):
         tasks = self.db.get_tasks_by_user_id(self.user.id)
-        chart = TaskChart(self, tasks)
-        chart.plot_completion_charts()
+        if tasks:
+            chart = TaskChart(self, tasks)
+            chart.plot_completion_charts()
 
+    # Page rerouting functions
     def show_add_task(self):
         from .task_page import TaskPage
         self.destroy()  # Destroy current page
