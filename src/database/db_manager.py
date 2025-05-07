@@ -67,12 +67,11 @@ class DatabaseManager:
         session.commit()
 
     @staticmethod
-    def add_task(user_id, description, date, category, priority, status):
+    def add_task(user_id, description, date, priority, status):
         task = Task(
             user_id=user_id,
             description=description,
             date=date,
-            category=category,
             priority=priority,
             status=status
         )
@@ -102,12 +101,11 @@ class DatabaseManager:
         return False
 
     @staticmethod
-    def update_task(task_id, description, date, category, priority, status, completed_date=None):
+    def update_task(task_id, description, date, priority, status, completed_date=None):
         task = session.query(Task).filter_by(id=task_id).first()
         if task:
             task.description = description
             task.date = date
-            task.category = category
             task.priority = priority
             task.status = status
             if completed_date:

@@ -74,7 +74,6 @@ class TaskPage(StyledFrame):
                     user_id=self.current_user.id,
                     description=description,
                     date=date_obj,
-                    category="General",  # Default category
                     priority=priority,
                     status="Pending"
                 )

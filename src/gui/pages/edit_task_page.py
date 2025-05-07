@@ -86,7 +86,6 @@ class EditTaskPage(StyledFrame):
                     task_id=self.current_task.id,
                     description=description,
                     date=date_obj,
-                    category="General",  # Default category
                     priority=priority,
                     status=status,
                     completed_date= completed_date

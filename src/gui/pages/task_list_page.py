@@ -188,7 +188,6 @@ class TaskListPage(StyledFrame):
                 task_id=task_id,
                 description=task.description,
                 date=task.date,
-                category=task.category,
                 priority=task.priority,
                 status=new_status,
                 completed_date=completed_date
